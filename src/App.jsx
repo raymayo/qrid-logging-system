@@ -6,6 +6,7 @@ import Admin from './components/Admin.jsx';
 import AdminLogin from './components/AdminLogin.jsx'; // Import the AdminLogin component
 import { Sidebar, SidebarItem } from './components/Sidebar';
 import { UserPlus, ScanQrCode, Monitor } from 'lucide-react';
+import StudentManagement from './components/StudentManagement.jsx';
 
 
 function App() {
@@ -40,7 +41,9 @@ function App() {
 			case 'ReadQR':
 				return <ReadQR />;
 			case 'Admin':
-				return <Admin onLogout={handleLogout} />;
+				return <Admin />;
+			case 'Students':
+				return <StudentManagement />;
 			default:
 				return <RegisterStudent />;
 		}
@@ -63,11 +66,17 @@ function App() {
 						active={activeComponent === 'ReadQR'}
 						onClick={() => setActiveComponent('ReadQR')}
 					/>
-					<SidebarItem
+					{/* <SidebarItem
 						icon={<Monitor />}
 						text="Logs"
 						active={activeComponent === 'Admin'}
 						onClick={() => setActiveComponent('Admin')}
+					/> */}
+					<SidebarItem
+						icon={<Monitor />}
+						text="Students"
+						active={activeComponent === 'Students'}
+						onClick={() => setActiveComponent('Students')}
 					/>
 				</Sidebar>
 			)}

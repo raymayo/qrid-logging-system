@@ -7,7 +7,7 @@ const RecentLogs = () => {
 	useEffect(() => {
 		const fetchLog = async () => {
 			try {
-				const response = await fetch('http://localhost:8000/api/admin/');
+				const response = await fetch('http://localhost:8000/api/admin/logs');
 				if (!response.ok) {
 					throw new Error('Network response was not ok');
 				}

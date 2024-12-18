@@ -50,6 +50,7 @@ const Log = require('./src/models/Log.cjs');
 app.post('/api/users', createUser);
 app.post('/api/scan', createLog);
 app.get('/api/admin/logs', getLogs); // Updated to prevent route collision
+app.get('/api/students', getStudents);
 app.get('/api/users/:studentNo', getUserByStudentNo);
 
 // Route handlers
@@ -77,6 +78,15 @@ async function createLog(req, res) {
     const savedLog = await newLog.save();
     res.status(201).json(savedLog);
   } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+}
+
+async function getStudents(req, res){
+  try {
+    const students = await Student.find();
+    res.json(students)
+  } catch (error){
     res.status(500).json({ message: error.message });
   }
 }

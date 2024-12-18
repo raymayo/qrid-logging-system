@@ -7,6 +7,7 @@ const studentSchema = new Schema({
   studentName: { type: String, required: true },
   studentYear: { type: String, required: true },
   studentCourse: { type: String, required: true },
+  studentSet: { type: String, required: true },
   createdAt: { type: Date, default: Date.now }
 });
 

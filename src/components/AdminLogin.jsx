@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Box } from "lucide-react";
 
 const AdminLogin = ({ setAdminLoggedIn }) => {
   const [username, setUsername] = useState('');
@@ -38,9 +39,12 @@ const AdminLogin = ({ setAdminLoggedIn }) => {
     <div className="w-screen grid h-screen grid-cols-12">
       {/* Left side */}
       <div className="bg-neutral-900 w-full h-screen col-span-7 flex flex-col p-6 justify-between">
-        <div className="text-neutral-100 font-medium text-xl">
+        <div className="text-neutral-100 font-medium text-xl flex gap-2">
+        <Box size={60}/>
+            <div>
           <h1>QR Code Logging</h1>
           <h1>System</h1>
+            </div>
         </div>
         <p className="text-xl text-neutral-100">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum aut ipsa, in illum sed porro optio velit necessitatibus officiis. Consequatur molestias doloremque at! Ex error, sapiente quo rem asperiores suscipit necessitatibus eius. Ratione facere, nulla possimus odio aperiam eaque corporis.

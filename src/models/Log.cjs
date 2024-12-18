@@ -1,20 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const Student = require('./Student.cjs'); // Import Student model
 
-// Define the schema
+// Define the log schema
 const logSchema = new Schema({
   studentInfo: {
-    No: { type: String, required: true},
-    Name: { type: String, required: true },
-    Year: { type: String, required: true },
-    Course: { type: String, required: true },
-    createdAt: { type: Date, default: Date.now }
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Student', // Reference to the Student model
+    required: true
   },
-  logAt: {type: Date, default: Date.now}
-  
+  logAt: { type: Date, default: Date.now },
+  logoutAt: { type: Date, default: null }
 });
 
-// Create the model with the schema
+// Create the Log model
 const Log = mongoose.model('Log', logSchema);
 
 module.exports = Log;
