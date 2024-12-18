@@ -1,10 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
-
-// Import models
-const Student = require('./src/models/Student.cjs'); 
-const Log = require('./src/models/Log.cjs'); 
+const bcrypt = require('bcryptjs');
+const Admin = require('./src/models/Admin.cjs'); // Path to your Admin model
 
 // Initialize Express app
 const app = express();
@@ -19,10 +17,39 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((error) => console.error('MongoDB connection error:', error));
 
-// Routes
+// Admin login route
+app.post('/api/admin/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    // Check if admin exists
+    const admin = await Admin.findOne({ username });
+    if (!admin) {
+      return res.status(401).json({ success: false, message: 'Invalid username or password' });
+    }
+
+    // Verify the password
+    const isMatch = await bcrypt.compare(password, admin.password);
+    if (!isMatch) {
+      return res.status(401).json({ success: false, message: 'Invalid username or password' });
+    }
+
+    // Admin successfully logged in
+    res.status(200).json({ success: true, message: 'Admin logged in successfully' });
+  } catch (error) {
+    console.error('Error during admin login:', error);
+    res.status(500).json({ success: false, message: 'Internal server error' });
+  }
+});
+
+// Import models
+const Student = require('./src/models/Student.cjs');
+const Log = require('./src/models/Log.cjs');
+
+// Other routes
 app.post('/api/users', createUser);
 app.post('/api/scan', createLog);
-app.get('/api/admin', getLogs);
+app.get('/api/admin/logs', getLogs); // Updated to prevent route collision
 app.get('/api/users/:studentNo', getUserByStudentNo);
 
 // Route handlers
@@ -77,6 +104,6 @@ async function getUserByStudentNo(req, res) {
   }
 }
 
-// Start server
+// Start the server
 const PORT = 8000;
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

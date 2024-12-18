@@ -70,8 +70,8 @@ const ReadQR = () => {
 			}
 	}
 	return (
-			<div className=''>
-		<div className="">
+			<div className='mx-auto w-full m-auto h-screen border border-blue-400 grid place-items-center'>
+		<div className="grid grid-cols-2 gap-8">
 			<div className="" style={styles.container}>
 				<Scanner className="" onScan={handleScan} scanDelay={2000} allowMultiple={true}
 				components={{
@@ -88,7 +88,7 @@ const ReadQR = () => {
 				}}
 				/>
 			</div>
-			{/* <div className="p-4 border border-zinc-200 shadow rounded-xl flex flex-col gap-3">
+			<div className="p-4 border border-zinc-200 shadow rounded-xl flex flex-col gap-3">
 				<h1>Student Information</h1>
 				<div>
 					<label className="block mb-1.5 text-sm font-medium">ID Number</label>
@@ -136,7 +136,7 @@ const ReadQR = () => {
 					/>
 				</div>
 
-			</div> */}
+			</div>
 
 			{/* <ul>
         {displayId.map(id => (
