@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import EditInfo from './EditInfo'; // Assuming you have the EditInfo component
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, SquarePen } from 'lucide-react';
 
 const Table = ({ data, updateStudentInfo }) => {
     const [filter, setFilter] = useState({
@@ -67,41 +67,41 @@ const Table = ({ data, updateStudentInfo }) => {
             <p className='text-zinc-500'>Create student QR Code and and post to database.</p>
           </div>
             {/* Filters */}
-            <div className="flex gap-4 w-full">
+            <div className="flex gap-4 w-full border border-zinc-200 p-4 rounded-lg shadow-sm">
                 {/* Student No Filter */}
-                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
-                  <label className='text-sm pb-2'>Filter ID</label>
+                <div className='flex flex-col w-full'>
+                  <label className='text-xs text-zinc-500 font-bold pb-2'>Filter ID</label>
                 <input
                     type="text"
                     name="studentNo"
                     placeholder="Search by Student No"
                     value={filter.studentNo}
                     onChange={handleFilterChange}
-                    className="p-2 border border-zinc-200 rounded-md"
+                    className="p-2 border border-zinc-200 rounded-lg shadow-sm"
                 />
                 </div>
 
                 {/* Student Name Filter */}
-                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
-                <label className='text-sm pb-2'>Filter Name</label>
+                <div className='flex flex-col w-full'>
+                <label className='text-xs text-zinc-500 font-bold pb-2'>Filter Name</label>
                 <input
                     type="text"
                     name="studentName"
                     placeholder="Search by Name"
                     value={filter.studentName}
                     onChange={handleFilterChange}
-                    className="p-2 border border-zinc-200 rounded-md"
+                    className="p-2 border border-zinc-200 rounded-lg shadow-sm"
                     />
                     </div>
 
                 {/* Year Filter */}
-                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
-                <label className='text-sm pb-2'>Filter Year Level</label>
+                <div className='flex flex-col w-full'>
+                <label className='text-xs text-zinc-500 font-bold pb-2'>Filter Year Level</label>
                 <select
                     name="studentYear"
                     value={filter.studentYear}
                     onChange={handleFilterChange}
-                    className="p-2 border border-zinc-200 rounded-md"
+                    className="p-2 border border-zinc-200 rounded-lg shadow-sm"
                 >
                     <option value="">Select Year</option>
                     {years.map((year) => (
@@ -113,13 +113,13 @@ const Table = ({ data, updateStudentInfo }) => {
                 </div>
 
                 {/* Course Filter */}
-                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
-                <label className='text-sm pb-2'>Filter Course</label>
+                <div className='flex flex-col w-full'>
+                <label className='text-xs text-zinc-500 font-bold pb-2'>Filter Course</label>
                 <select
                     name="studentCourse"
                     value={filter.studentCourse}
                     onChange={handleFilterChange}
-                    className="p-2 border border-zinc-200 rounded-md"
+                    className="p-2 border border-zinc-200 rounded-lg shadow-sm"
                 >
                     <option value="">Select Course</option>
                     {courses.map((course) => (
@@ -131,22 +131,22 @@ const Table = ({ data, updateStudentInfo }) => {
                 </div>
 
                 {/* Set Filter */}
-                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
-                <label className='text-sm pb-2'>Filter Set</label>
+                <div className='flex flex-col w-full'>
+                <label className='text-xs text-zinc-500 font-bold pb-2'>Filter Set</label>
                 <input
                     type="text"
                     name="studentSet"
                     placeholder="Search by Set"
                     value={filter.studentSet}
                     onChange={handleFilterChange}
-                    className="p-2 border border-zinc-200 rounded-md"
+                    className="p-2 border border-zinc-200 rounded-lg shadow-sm"
                 />
                 </div>
             </div>
-            <div className='border border-zinc-200 rounded-md shadow'>
+            <div className='border border-zinc-200 rounded-md shadow h-full flex flex-col justify-between'>
 
             {/* Table */}
-            <table className="w-full border-collapse ">
+            <table className="w-full border-collapse">
                 <thead>
                     <tr className='border-b border-zinc-200 rounded-t-md'>
                         <th className="pl-5 p-4 text-left font-semibold text-base text-zinc-500">Student No</th>
@@ -169,9 +169,9 @@ const Table = ({ data, updateStudentInfo }) => {
                                 <td className="pl-5 p-2 text-left font-normal text-zinc-950">
                                     <button
                                         onClick={() => handleEditClick(row)}
-                                        className="p-2 bg-yellow-500 text-white rounded"
+                                        className="p-2 bg-zinc-50 border border-zinc-200 text-zinc-950 rounded-lg shadow-sm"
                                     >
-                                        Edit
+                                        <SquarePen size={20}/>
                                     </button>
                                 </td>
                             </tr>
@@ -187,21 +187,21 @@ const Table = ({ data, updateStudentInfo }) => {
             </table>
 
             {/* Pagination */}
-            <div className="flex gap-2 items-center p-4 justify-end">
+            <div className="flex gap-2 items-end p-4 justify-end">
               <span className='mr-12'>
                   Page {currentPage} of {totalPages}
               </span>
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}
                     disabled={currentPage === 1}
-                    className="p-2 bg-zinc-100 text-zinc-950 border border-zinc-300 rounded-lg shadow-md cursor-pointer"
+                    className="p-2 bg-zinc-100 text-zinc-950 border border-zinc-300 rounded-lg shadow-sm cursor-pointer"
                     >
                     <ChevronLeft />
                 </button>
                 <button
                     onClick={() => handlePageChange(currentPage + 1)}
                     disabled={currentPage === totalPages}
-                    className="p-2 bg-zinc-100 text-zinc-950 border border-zinc-300 rounded-lg shadow-md cursor-pointer"
+                    className="p-2 bg-zinc-100 text-zinc-950 border border-zinc-300 rounded-lg shadow-sm cursor-pointer"
                     >
                     <ChevronRight />
                 </button>
