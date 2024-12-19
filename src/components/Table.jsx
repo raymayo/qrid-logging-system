@@ -67,13 +67,10 @@ const Table = ({ data, updateStudentInfo }) => {
             <p className='text-zinc-500'>Create student QR Code and and post to database.</p>
           </div>
             {/* Filters */}
-            <div className="flex flex-col gap-1 border border-blue-200 p-4 rounded-md shadow w-full">
-              <h1 className='text-xl'>Filter</h1>
-              <p></p>
-              <div className='flex gap-4 w-full'>
+            <div className="flex gap-4 w-full">
                 {/* Student No Filter */}
-                <div className='flex flex-col w-full rounded-lg shadow'>
-                  {/* <label className='text-sm pb-2'>Student ID</label> */}
+                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
+                  <label className='text-sm pb-2'>Filter ID</label>
                 <input
                     type="text"
                     name="studentNo"
@@ -85,8 +82,8 @@ const Table = ({ data, updateStudentInfo }) => {
                 </div>
 
                 {/* Student Name Filter */}
-                <div className='flex flex-col w-full rounded-lg shadow'>
-                {/* <label className='text-sm pb-2'>Student Name</label> */}
+                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
+                <label className='text-sm pb-2'>Filter Name</label>
                 <input
                     type="text"
                     name="studentName"
@@ -98,8 +95,8 @@ const Table = ({ data, updateStudentInfo }) => {
                     </div>
 
                 {/* Year Filter */}
-                <div className='flex flex-col w-full rounded-lg shadow'>
-                {/* <label className='text-sm pb-2'>Year Level</label> */}
+                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
+                <label className='text-sm pb-2'>Filter Year Level</label>
                 <select
                     name="studentYear"
                     value={filter.studentYear}
@@ -116,8 +113,8 @@ const Table = ({ data, updateStudentInfo }) => {
                 </div>
 
                 {/* Course Filter */}
-                <div className='flex flex-col w-full rounded-lg shadow'>
-                {/* <label className='text-sm pb-2'>Course</label> */}
+                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
+                <label className='text-sm pb-2'>Filter Course</label>
                 <select
                     name="studentCourse"
                     value={filter.studentCourse}
@@ -134,8 +131,8 @@ const Table = ({ data, updateStudentInfo }) => {
                 </div>
 
                 {/* Set Filter */}
-                <div className='flex flex-col w-full rounded-lg shadow'>
-                {/* <label className='text-sm pb-2'>Student Set</label> */}
+                <div className='flex flex-col border border-zinc-200 p-4 w-full rounded-lg shadow'>
+                <label className='text-sm pb-2'>Filter Set</label>
                 <input
                     type="text"
                     name="studentSet"
@@ -144,7 +141,6 @@ const Table = ({ data, updateStudentInfo }) => {
                     onChange={handleFilterChange}
                     className="p-2 border border-zinc-200 rounded-md"
                 />
-                </div>
                 </div>
             </div>
             <div className='border border-zinc-200 rounded-md shadow'>
